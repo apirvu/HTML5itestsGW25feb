@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (c) 2007-2013, Kaazing Corporation. All rights reserved.
+
+-->
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+                xmlns:MyComp="*"
+                layout="absolute" 
+                width="800" 
+                height="600" 
+                backgroundGradientAlphas="[1.0, 1.0]" 
+                backgroundAlpha="0.0" 
+                backgroundGradientColors="[#FFFFFF, #FFFFFF]" 
+                backgroundColor="#FFFFFF" 
+                initialize="initApp()"
+                paddingLeft="0" 
+                paddingTop="0" 
+                paddingBottom="0" 
+                paddingRight="0" 
+                cornerRadius="0" 
+                alpha="1.0">
+    <mx:Script>
+    <![CDATA[
+    import mx.core.Container
+    
+    public function initApp():void {
+        var myQueryStrings:Object = Application.application.systemManager.stage.loaderInfo.parameters
+        var selectedPanel:String = (myQueryStrings.showPanel) ? myQueryStrings.showPanel : "wsPanel"
+        var container:Container = Container(viewStack.getChildByName(selectedPanel))
+        if (container != null) {
+            viewStack.selectedChild = container
+        }
+    }
+
+    ]]>
+    </mx:Script>
+    
+    <mx:ViewStack id="viewStack" width="100%" height="100%" selectedIndex="0">
+        <MyComp:ws id="wsPanel"/>
+        <MyComp:sse id="ssePanel"/>
+    </mx:ViewStack>
+
+</mx:Application>

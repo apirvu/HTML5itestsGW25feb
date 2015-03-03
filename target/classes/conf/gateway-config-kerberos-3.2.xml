@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2007-2014, Kaazing Corporation. All rights reserved.
+
+-->
+
+<!--
+This configuration file exists to test old configuration files that
+have clients using the old WebSocketDefaults class, to make sure they can still
+access Application-Negotiate connections and re-connections.
+
+See com.kaazing.gateway.client.security.impl.WrapperKerberos5ChallengeHandlerTest
+-->
+<gateway-config xmlns="http://xmlns.kaazing.com/2012/09/gateway">
+  <properties>
+    <property>
+      <name>gateway.hostname</name>
+      <value>gateway.kaazing.wan</value>
+    </property>
+    <property>
+      <name>gateway.base.port</name>
+      <value>8000</value>
+    </property>
+    <property>
+      <name>gateway.extras.port</name>
+      <value>8001</value>
+    </property>
+    <property>
+      <name>gateway.secure.extras.port</name>
+      <value>9001</value>
+    </property>
+    <property>
+      <name>gateway.proxy.port</name>
+      <value>8003</value>
+    </property>
+  </properties>
+  <!-- Protected "Application Negotiate" or "Negotiate" Echo Service -->
+  <service>
+    <name>echo</name>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/echo</accept>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/echoApplicationNegotiate</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure.extras.port}/echo</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure.extras.port}/echoApplicationNegotiate</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <authentication.connect>ws://${gateway.hostname}:${gateway.proxy.port}/kerberos5</authentication.connect>
+      <authentication.identifier>HTTP/gateway</authentication.identifier>
+    </properties>
+    <realm-name>kerberos</realm-name>
+    <authorization-constraint>
+      <require-role>*</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- Kerberos Proxy Service -->
+  <service>
+    <name>kerberos5.proxy</name>
+    <accept>ws://${gateway.hostname}:${gateway.proxy.port}/kerberos5</accept>
+    <connect>tcp://kdc.kaazing.wan:88</connect>
+    <type>kerberos5.proxy</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <authentication.connect>ws://${gateway.hostname}:${gateway.proxy.port}/kerberos5</authentication.connect>
+      <authentication.identifier>HTTP/gateway</authentication.identifier>
+    </properties>
+    <realm-name>kerberos</realm-name>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- Base directory service -->
+  <service>
+    <name>directory</name>
+    <accept>http://${gateway.hostname}:${gateway.base.port}/</accept>
+    <type>directory</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <authentication.connect>ws://${gateway.hostname}:${gateway.proxy.port}/kerberos5</authentication.connect>
+      <authentication.identifier>HTTP/gateway</authentication.identifier>
+      <directory>/base</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+    <realm-name>kerberos</realm-name>
+  </service>
+  <!-- Extras directory service -->
+  <service>
+    <name>directory2</name>
+    <accept>http://${gateway.hostname}:${gateway.extras.port}/</accept>
+    <type>directory</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <authentication.connect>ws://${gateway.hostname}:${gateway.proxy.port}/kerberos5</authentication.connect>
+      <authentication.identifier>HTTP/gateway</authentication.identifier>
+      <directory>/extras</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+    <realm-name>kerberos</realm-name>
+  </service>
+  <!-- Session specifying application negotiate -->
+  <security>
+    <keystore>
+      <type>JCEKS</type>
+      <file>keystore.db</file>
+      <password-file>keystore.pw</password-file>
+    </keystore>
+    <truststore>
+      <file>truststore.db</file>
+    </truststore>
+    <realm>
+      <name>kerberos</name>
+      <description>Kaazing WebSocket Gateway Demo</description>
+      <authentication>
+        <http-challenge-scheme>Application Negotiate</http-challenge-scheme>
+        <authorization-mode>recycle</authorization-mode>
+        <authorization-timeout>1800</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>kerberos5</type>
+            <success>required</success>
+            <options>
+              <useKeyTab>true</useKeyTab>
+              <keyTab>FILE:/etc/gateway.keytab</keyTab>
+              <principal>HTTP/gateway</principal>
+              <isInitiator>false</isInitiator>
+              <doNotPrompt>true</doNotPrompt>
+              <storeKey>true</storeKey>
+            </options>
+          </login-module>
+          <login-module>
+            <type>gss</type>
+            <success>required</success>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+  </security>
+  <service>
+    <name>session</name>
+    <accept>http://${gateway.hostname}:${gateway.extras.port}/session</accept>
+    <type>session</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <authentication.connect>ws://${gateway.hostname}:${gateway.proxy.port}/kerberos5</authentication.connect>
+      <authentication.identifier>HTTP/gateway</authentication.identifier>
+    </properties>
+    <realm-name>kerberos</realm-name>
+  </service>
+  <service-defaults>
+    <mime-mapping>
+      <extension>html</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htm</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>js</extension>
+      <mime-type>text/javascript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>png</extension>
+      <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>gif</extension>
+      <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jpg</extension>
+      <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jpeg</extension>
+      <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>css</extension>
+      <mime-type>text/css</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>swf</extension>
+      <mime-type>application/x-shockwave-flash</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>xap</extension>
+      <mime-type>application/x-silverlight-app</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htc</extension>
+      <mime-type>text/x-component</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jnlp</extension>
+      <mime-type>application/x-java-jnlp-file</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>manifest</extension>
+      <mime-type>text/cache-manifest</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>appcache</extension>
+      <mime-type>text/cache-manifest</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>vtt</extension>
+      <mime-type>text/vtt</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>aspx</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+  </service-defaults>
+</gateway-config>
+

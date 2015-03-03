@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (c) 2007-2013, Kaazing Corporation. All rights reserved.
+
+-->
+
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
+          title="Adobe Flex/ActionScript WebSocket Demo" 
+          layout="absolute" 
+          width="100%" 
+          height="100%" 
+          initialize="initApp()"
+          creationComplete="setUrl()">
+
+    <mx:Script>
+    <![CDATA[
+    import com.kaazing.gateway.client.html5.MessageEvent
+    import com.kaazing.gateway.client.html5.WebSocket
+    import com.kaazing.gateway.client.security.BasicChallengeHandler;
+    import com.kaazing.gateway.client.security.ChallengeHandler;
+    import com.kaazing.gateway.client.security.ChallengeHandlers;
+    import com.kaazing.gateway.client.security.DispatchChallengeHandler;
+    import com.kaazing.gateway.client.security.demo.DemoLoginHandler;
+
+    import flash.display.LoaderInfo
+
+    import mx.containers.TitleWindow
+    import mx.logging.Log;
+    import mx.logging.LogEventLevel;
+    import mx.logging.targets.TraceTarget;
+    import mx.managers.PopUpManager
+    import mx.utils.URLUtil
+
+    import flash.events.Event
+
+    private var webSocket:WebSocket = null
+
+    //called when the complete application has loaded
+    public function setUrl():void {
+        var url:String = parentApplication.systemManager.stage.loaderInfo.url
+        // strip off path
+        url = URLUtil.getProtocol(url).replace("http", "ws") + "://" + URLUtil.getServerNameWithPort(url)
+        location.text = url + "/echo"
+    }
+
+
+    public function initApp():void {
+        initLogging();
+        connect.addEventListener("buttonDown", connectHandler)
+        disconnect.addEventListener("buttonDown", disconnectHandler)
+        send.addEventListener("buttonDown", sendHandler)
+
+        connect.enabled = true
+        disconnect.enabled = false
+        send.enabled = false
+
+		// setup login handler
+		var basicHandler:BasicChallengeHandler = (ChallengeHandlers.load(BasicChallengeHandler) as BasicChallengeHandler);
+		basicHandler.setLoginHandler(new DemoLoginHandler(this));
+		ChallengeHandlers.setDefault(basicHandler);
+	}
+
+  
+    // See http://livedocs.adobe.com/flex/3/html/logging_03.html#178599 for instructions on using the debug Flash Player
+    private function initLogging():void {
+        // Create a target.
+        var logTarget:TraceTarget = new TraceTarget();
+
+        // Log only messages for the classes in Kaazing client code
+        logTarget.filters=["com.kaazing.gateway.client.*"];
+
+        // Log at error level.
+        logTarget.level = LogEventLevel.ERROR;
+
+        // Add date, time, category, and log level to the output.
+        logTarget.includeDate = true;
+        logTarget.includeTime = true;
+        logTarget.includeCategory = true;
+        logTarget.includeLevel = true;
+
+        // Begin logging.
+        Log.addTarget(logTarget);
+    }
+
+    private function connectHandler(e:Event):void {
+        log("CONNECT: " + location.text + "\n")
+        var locStr:String = location.text
+
+        webSocket = new WebSocket(location.text)
+        webSocket.onclose = closeHandler
+        webSocket.onmessage = readHandler
+        webSocket.onopen = openHandler
+        connect.enabled = false
+        disconnect.enabled = true
+        send.enabled = false
+    }
+
+    private function disconnectHandler(e:Event):void {
+        log("DISCONNECT\n")
+        if (webSocket != null) {
+            try {
+                webSocket.close()
+            } catch (ex) {
+                log("ERROR: "+ex+"\n")
+            }
+            webSocket = null
+        }
+        connect.enabled = false
+        disconnect.enabled = false
+        send.enabled = false
+    }
+
+    private function sendHandler(e:Event):void {
+        if (webSocket != null) {
+            webSocket.send(message.text)
+        }
+        if (message.text.length <= 30) {
+            log("SEND: " + message.text + "\n")
+        }
+        else {
+            log("SEND: " + message.text.substr(0,30) + "...length: ["+message.text.length+"]\n")
+        }
+    }
+
+    private function readHandler(e:MessageEvent):void {
+        var serverMessage:String = e.data
+        if (serverMessage.length <= 30) {
+            log("MESSAGE: " + serverMessage + "\n")
+        }
+        else {
+            log("MESSAGE: " + serverMessage.substr(0,30) + "...length: ["+serverMessage.length+"]\n")
+        }
+    }
+
+    private function openHandler(e:Event):void {
+        log("CONNECTED\n")
+        connect.enabled = false
+        disconnect.enabled = true
+        send.enabled = true
+    }
+
+    private function closeHandler(e:Event):void {
+        log("DISCONNECTED\n")
+        connect.enabled = true
+        disconnect.enabled = false
+        send.enabled = false
+    }
+
+    private const LOG_LIMIT:int = 50
+    private var outputLines:Array = []
+    public function log(s:String):void {
+        outputLines.unshift(s)
+        if (outputLines.length > LOG_LIMIT) {
+            outputLines.pop()
+        }
+        logWindow.text = outputLines.join("")
+    }
+
+    private function clearLogHandler(e:MouseEvent):void {
+        outputLines = []
+        logWindow.text = ""
+    }
+
+
+    ]]>
+    </mx:Script>
+
+    <mx:TextArea x="43" y="20" editable="false" enabled="true" wordWrap="true" width="542" height="36" borderStyle="none" backgroundAlpha="0.0" fontSize="12">
+        <mx:text><![CDATA[This is a demo of an echo server client that uses WebSocket to send text messages to the Kaazing WebSocket Gateway Echo service, which echoes back the messages.]]></mx:text>
+    </mx:TextArea>
+
+    <mx:Canvas x="47" y="246" width="422" height="218">
+        <mx:TextArea x="28" y="6" editable="false" enabled="true" wordWrap="true" width="251" height="18" borderStyle="none" backgroundAlpha="0.0" fontSize="12">
+            <mx:text>Log messages</mx:text>
+        </mx:TextArea>
+        <mx:Image x="1" y="3" source="/resources/images/sidebar_bkg.png" width="394"/>
+        <mx:Image x="2" y="32" source="/resources/images/sidebar_bkg.png" width="395"/>
+        <mx:Image x="1" y="9" source="/resources/images/info-19x19.png" width="19" height="19"/>
+        <mx:TextArea x="10" y="43" width="402" height="169" wordWrap="true" editable="false" enabled="true" maxChars="100000" id="logWindow"/>
+        <mx:Button x="323" y="4" label="Clear log" id="clearlog" click="clearLogHandler(event);"  height="20" fontSize="12"/>
+    </mx:Canvas>
+    <mx:HRule x="16" y="17" width="571"/>
+    <mx:HRule x="16.5" y="60" width="570"/>
+    <mx:HRule x="17" y="478" width="570"/>
+    <mx:Canvas x="47" y="144" width="422" height="100">
+        <mx:TextArea x="28" y="10" editable="false" enabled="true" wordWrap="true" width="251" height="18" borderStyle="none" backgroundAlpha="0.0" fontSize="12">
+            <mx:text>Send messages to the server.</mx:text>
+        </mx:TextArea>
+        <mx:Image x="1" y="3" source="/resources/images/sidebar_bkg.png" width="394"/>
+        <mx:Image x="2" y="32" source="/resources/images/sidebar_bkg.png" width="395"/>
+        <mx:Image x="1" y="9" source="/resources/images/info-19x19.png" width="19" height="19"/>
+        <mx:Label x="14" y="41" text="Message" fontSize="12" fontWeight="bold"/>
+        <mx:TextInput x="104" y="39" height="24" id="message" text="Hello, WebSocket!"  fontSize="12" width="208"/>
+        <mx:Button x="54" y="67" label="Send" height="20" id="send" fontSize="12"/>
+    </mx:Canvas>
+    <mx:Canvas x="47" y="84" width="422" height="59" fontSize="14">
+        <mx:Label x="13" y="4" text="Location" fontSize="12" fontWeight="bold"/>
+        <mx:TextInput x="104" y="2" height="24" id="location" text="ws://localhost:8001/echo" fontSize="12" width="208"/>
+        <mx:Button x="54" y="32" label="Connect" height="20" id="connect" fontSize="12"/>
+        <mx:Button x="163" y="32" label="Disconnect" height="20" id="disconnect" fontSize="12"/>
+    </mx:Canvas>
+    <mx:Image x="16" y="29" source="/resources/images/info-19x19.png" width="19" height="19"/>
+
+</mx:Panel>

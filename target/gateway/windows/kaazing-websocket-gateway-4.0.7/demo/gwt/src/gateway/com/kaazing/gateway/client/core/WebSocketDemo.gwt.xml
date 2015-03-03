@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2007-2013, Kaazing Corporation. All rights reserved.
+
+-->
+
+<module rename-to="WebSocketDemo">
+  <!-- Inherit the core Web Toolkit stuff -->
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='com.kaazing.gateway.client'/>
+  <source path="demo"/>
+
+  <!-- WebSocket demo -->
+  <!-- 
+  	this is the URL for Kaazing WebSocket.js
+   -->
+  <script src="http://localhost:8001/demo/gateway/javascript/WebSocket.js"/>
+  <entry-point class='com.kaazing.gateway.client.core.demo.WebSocketDemo'/>
+
+</module>
+

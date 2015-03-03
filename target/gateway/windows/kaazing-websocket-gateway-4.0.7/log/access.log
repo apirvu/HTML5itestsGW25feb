@@ -1,0 +1,416 @@
+2015-03-02 16:43:04,230 INFO  /127.0.0.1:61406 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:43:04,250 INFO  /127.0.0.1:61407 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:04,280 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61407 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:05,411 INFO  /127.0.0.1:61406 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:43:05,431 INFO  /127.0.0.1:61408 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:05,441 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61408 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:06,545 INFO  /127.0.0.1:61406 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:43:06,565 INFO  /127.0.0.1:61409 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:06,585 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61409 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:07,686 INFO  /127.0.0.1:61406 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:43:07,706 INFO  /127.0.0.1:61410 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:07,706 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61410 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:08,827 INFO  /127.0.0.1:61406 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:43:08,827 INFO  /127.0.0.1:61411 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:08,837 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61411 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:08,947 INFO  /127.0.0.1:61406 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:43:08,967 INFO  /127.0.0.1:61412 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:43:08,977 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61412 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:46,365 INFO  /127.0.0.1:61520 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:46,365 INFO  /127.0.0.1:61521 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:46,385 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61521 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,614 INFO  /127.0.0.1:61524 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:51,624 INFO  /127.0.0.1:61525 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,634 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61525 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,744 INFO  /127.0.0.1:61524 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:51,744 INFO  /127.0.0.1:61526 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,754 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61526 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,854 INFO  /127.0.0.1:61524 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:51,854 INFO  /127.0.0.1:61527 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,864 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61527 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,864 INFO  /127.0.0.1:61524 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:51,874 INFO  /127.0.0.1:61528 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,874 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61528 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,874 INFO  /127.0.0.1:61524 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:51,884 INFO  /127.0.0.1:61529 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,884 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61529 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,884 INFO  /127.0.0.1:61524 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:46:51,894 INFO  /127.0.0.1:61530 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:46:51,894 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61530 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:30,256 INFO  /127.0.0.1:61534 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:30,256 INFO  /127.0.0.1:61535 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:30,276 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61535 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:30,376 INFO  /127.0.0.1:61534 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:30,376 INFO  /127.0.0.1:61536 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:30,376 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61536 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:30,486 INFO  /127.0.0.1:61537 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:30,496 INFO  /127.0.0.1:61538 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:30,564 INFO  [ws://localhost:8004/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61538 http/1.1] - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:31,682 INFO  /127.0.0.1:61534 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:31,683 INFO  /127.0.0.1:61539 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:31,703 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61539 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:31,821 INFO  /127.0.0.1:61534 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:31,821 INFO  /127.0.0.1:61540 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:31,831 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61540 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:31,941 INFO  /127.0.0.1:61534 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:31,961 INFO  /127.0.0.1:61541 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:31,971 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61541 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:32,071 INFO  /127.0.0.1:61537 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:47:32,081 INFO  /127.0.0.1:61542 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:47:32,101 INFO  [ws://localhost:8004/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61542 http/1.1] - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:08,657 INFO  /127.0.0.1:61545 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:48:08,667 INFO  /127.0.0.1:61546 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:08,697 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61546 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:08,807 INFO  /127.0.0.1:61545 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:48:08,807 INFO  /127.0.0.1:61547 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:08,817 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61547 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:08,927 INFO  /127.0.0.1:61545 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:48:08,937 INFO  /127.0.0.1:61548 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:08,947 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61548 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:09,067 INFO  /127.0.0.1:61545 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:48:09,067 INFO  /127.0.0.1:61549 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:09,077 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61549 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:09,187 INFO  /127.0.0.1:61545 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:48:09,197 INFO  /127.0.0.1:61550 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:48:09,207 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61550 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:03,666 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:03,676 INFO  /127.0.0.1:61554 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:03,686 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61554 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:04,809 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:04,809 INFO  /127.0.0.1:61555 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:04,819 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61555 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:05,936 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:05,946 INFO  /127.0.0.1:61556 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:05,956 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61556 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:07,067 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:07,077 INFO  /127.0.0.1:61557 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:07,087 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61557 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:08,198 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:08,208 INFO  /127.0.0.1:61558 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:08,208 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61558 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:09,329 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:09,349 INFO  /127.0.0.1:61559 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:09,349 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61559 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:10,468 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:10,478 INFO  /127.0.0.1:61560 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:10,478 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61560 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:11,589 INFO  /127.0.0.1:61553 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:11,599 INFO  /127.0.0.1:61561 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:11,609 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61561 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:17,749 INFO  /127.0.0.1:61564 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:17,769 INFO  /127.0.0.1:61565 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:17,769 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61565 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:18,882 INFO  /127.0.0.1:61564 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:18,892 INFO  /127.0.0.1:61566 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:18,912 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61566 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:20,029 INFO  /127.0.0.1:61564 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:20,029 INFO  /127.0.0.1:61567 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:20,029 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61567 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:21,140 INFO  /127.0.0.1:61564 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:21,150 INFO  /127.0.0.1:61568 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:21,150 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61568 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:22,280 INFO  /127.0.0.1:61569 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:22,280 INFO  /127.0.0.1:61570 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:22,290 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61570 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:23,451 INFO  /127.0.0.1:61569 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:23,451 INFO  /127.0.0.1:61571 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:23,461 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61571 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:24,612 INFO  /127.0.0.1:61569 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:24,622 INFO  /127.0.0.1:61572 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:24,632 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61572 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:25,743 INFO  /127.0.0.1:61569 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:25,753 INFO  /127.0.0.1:61573 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:25,763 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61573 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:26,897 INFO  /127.0.0.1:61574 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:26,907 INFO  /127.0.0.1:61575 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:26,907 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61575 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:28,023 INFO  /127.0.0.1:61574 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:28,033 INFO  /127.0.0.1:61576 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:28,043 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61576 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:29,144 INFO  /127.0.0.1:61574 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:29,144 INFO  /127.0.0.1:61577 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:29,144 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61577 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:30,285 INFO  /127.0.0.1:61574 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:30,285 INFO  /127.0.0.1:61578 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:30,295 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61578 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:31,480 INFO  /127.0.0.1:61580 - [localhost:8050] "GET /echoRepeat1001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:31,490 INFO  /127.0.0.1:61581 - [localhost:8050] "GET /echoRepeat1001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:31,490 INFO  [ws://localhost:8050/echoRepeat1001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61581 http/1.1] - [localhost:8050] "GET /echoRepeat1001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:32,754 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:32,764 INFO  /127.0.0.1:61583 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:32,764 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61583 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:33,878 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:33,878 INFO  /127.0.0.1:61584 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:33,888 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61584 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:34,996 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:35,006 INFO  /127.0.0.1:61585 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:35,016 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61585 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:36,122 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:36,142 INFO  /127.0.0.1:61586 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:36,142 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61586 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:37,276 INFO  /127.0.0.1:61587 - [localhost:8050] "GET /echoRepeat10001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:37,276 INFO  /127.0.0.1:61588 - [localhost:8050] "GET /echoRepeat10001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:37,276 INFO  [ws://localhost:8050/echoRepeat10001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61588 http/1.1] - [localhost:8050] "GET /echoRepeat10001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:39,128 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:39,128 INFO  /127.0.0.1:61589 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:39,128 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61589 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:49:40,239 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:40,239 INFO  /127.0.0.1:61590 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:40,239 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61590 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:49:41,356 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:41,366 INFO  /127.0.0.1:61591 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:41,376 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61591 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:49:42,483 INFO  /127.0.0.1:61582 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:49:42,493 INFO  /127.0.0.1:61592 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:49:42,503 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61592 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:50:43,563 INFO  /127.0.0.1:61596 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:43,573 INFO  /127.0.0.1:61597 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:43,593 INFO  [ws://localhost:8004/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61597 http/1.1] - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:44,697 INFO  /127.0.0.1:61598 - [localhost] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:44,697 INFO  /127.0.0.1:61599 - [localhost:80] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:44,707 INFO  [ws://localhost:80/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61599 http/1.1] - [localhost:80] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:45,828 INFO  /127.0.0.1:61596 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:45,838 INFO  /127.0.0.1:61600 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:45,858 INFO  [ws://localhost:8004/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61600 http/1.1] - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:45,868 INFO  /127.0.0.1:61596 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:45,868 INFO  /127.0.0.1:61601 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:45,868 INFO  [ws://localhost:8004/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61601 http/1.1] - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:48,102 INFO  /127.0.0.1:61598 - [localhost] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:48,112 INFO  /127.0.0.1:61602 - [localhost] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:48,112 INFO  [ws://localhost:80/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61602 http/1.1] - [localhost] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:49,262 INFO  /127.0.0.1:61603 - [localhost:8006] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:49,262 INFO  /127.0.0.1:61604 - [localhost:8006] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:49,262 INFO  [ws://localhost:8006/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61604 http/1.1] - [localhost:8006] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:50:52,286 INFO  /127.0.0.1:61603 - [localhost:8006] "GET /echoAuth/;a/wjy20x1Yw9uo1aEGuGC9GeZyh95apB6s?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:52,287 INFO  /127.0.0.1:61603 - [localhost:8006] "GET /echoAuth/;a/wjy20x1Yw9uo1aEGuGC9GeZyh95apB6s?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:52,297 INFO  [http://localhost:8006/echoAuth/;a/wjy20x1Yw9uo1aEGuGC9GeZyh95apB6s?.kl=Y httpxe/1.1]
+  [tcp://127.0.0.1:61603 http/1.1] - [localhost:8006] "GET /echoAuth/;a/wjy20x1Yw9uo1aEGuGC9GeZyh95apB6s?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:56,290 INFO  /127.0.0.1:61605 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:50:56,310 INFO  /127.0.0.1:61606 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:00,308 INFO  /127.0.0.1:61605 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:00,308 INFO  /127.0.0.1:61607 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:00,309 INFO  [ws://localhost:8004/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61607 http/1.1] - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:01,420 INFO  /127.0.0.1:61605 - [localhost:8004] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:01,420 INFO  /127.0.0.1:61608 - [localhost:8004] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:05,426 INFO  /127.0.0.1:61609 - [localhost] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:05,426 INFO  /127.0.0.1:61610 - [localhost] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:05,427 INFO  [ws://localhost:80/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61610 http/1.1] - [localhost] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:06,538 INFO  /127.0.0.1:61611 - [localhost:8006] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:06,538 INFO  /127.0.0.1:61612 - [localhost:8006] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:06,548 INFO  [ws://localhost:8006/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61612 http/1.1] - [localhost:8006] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:09,553 INFO  /127.0.0.1:61611 - [localhost:8006] "GET /echoAuth/;a/7P1PjKKdn4Ij11Fr6TU6HOzOQNDEd98x?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:09,553 INFO  /127.0.0.1:61611 - [localhost:8006] "GET /echoAuth/;a/7P1PjKKdn4Ij11Fr6TU6HOzOQNDEd98x?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:09,553 INFO  [http://localhost:8006/echoAuth/;a/7P1PjKKdn4Ij11Fr6TU6HOzOQNDEd98x?.kl=Y httpxe/1.1]
+  [tcp://127.0.0.1:61611 http/1.1] - [localhost:8006] "GET /echoAuth/;a/7P1PjKKdn4Ij11Fr6TU6HOzOQNDEd98x?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:13,555 INFO  /127.0.0.1:61613 - [localhost] "GET /echoAuth/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:51:13,555 INFO  /127.0.0.1:61614 - [localhost:80] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:51:13,556 INFO  [ws://localhost:80/echoAuth x-kaazing-handshake]
+  [tcp://127.0.0.1:61614 http/1.1] - [localhost:80] "GET /echoAuth?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:31,756 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:31,756 INFO  /127.0.0.1:61641 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:31,776 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61641 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:32,877 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:32,887 INFO  /127.0.0.1:61642 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:32,887 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61642 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:34,009 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:34,019 INFO  /127.0.0.1:61643 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:34,029 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61643 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:35,140 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:35,140 INFO  /127.0.0.1:61644 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:35,140 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61644 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:36,241 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:36,241 INFO  /127.0.0.1:61645 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:36,251 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61645 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:37,364 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:37,384 INFO  /127.0.0.1:61646 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:37,394 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61646 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:38,495 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:38,505 INFO  /127.0.0.1:61647 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:38,515 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61647 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:39,618 INFO  /127.0.0.1:61640 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:39,628 INFO  /127.0.0.1:61648 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:39,638 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61648 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:45,026 INFO  /127.0.0.1:61651 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:45,027 INFO  /127.0.0.1:61652 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:45,037 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61652 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:46,149 INFO  /127.0.0.1:61651 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:46,159 INFO  /127.0.0.1:61653 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:46,159 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61653 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:47,270 INFO  /127.0.0.1:61651 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:47,280 INFO  /127.0.0.1:61654 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:47,290 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61654 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:48,395 INFO  /127.0.0.1:61651 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:48,395 INFO  /127.0.0.1:61655 - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:48,405 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61655 http/1.1] - [localhost] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:49,520 INFO  /127.0.0.1:61656 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:49,530 INFO  /127.0.0.1:61657 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:49,540 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61657 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:50,672 INFO  /127.0.0.1:61656 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:50,682 INFO  /127.0.0.1:61658 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:50,692 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61658 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:51,817 INFO  /127.0.0.1:61656 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:51,837 INFO  /127.0.0.1:61659 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:51,837 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61659 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:52,948 INFO  /127.0.0.1:61656 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:52,958 INFO  /127.0.0.1:61660 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:52,958 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61660 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:54,079 INFO  /127.0.0.1:61664 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:54,079 INFO  /127.0.0.1:61665 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:54,089 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61665 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:55,190 INFO  /127.0.0.1:61664 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:55,200 INFO  /127.0.0.1:61668 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:55,210 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61668 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:56,315 INFO  /127.0.0.1:61664 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:56,315 INFO  /127.0.0.1:61669 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:56,325 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61669 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:57,439 INFO  /127.0.0.1:61664 - [localhost] "GET /echo80/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:57,450 INFO  /127.0.0.1:61670 - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:57,450 INFO  [ws://localhost:80/echo80 x-kaazing-handshake]
+  [tcp://127.0.0.1:61670 http/1.1] - [localhost:80] "GET /echo80?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:58,584 INFO  /127.0.0.1:61674 - [localhost:8050] "GET /echoRepeat1001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:58,584 INFO  /127.0.0.1:61675 - [localhost:8050] "GET /echoRepeat1001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:58,584 INFO  [ws://localhost:8050/echoRepeat1001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61675 http/1.1] - [localhost:8050] "GET /echoRepeat1001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:59,755 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:55:59,755 INFO  /127.0.0.1:61678 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:55:59,765 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61678 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:00,870 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:00,880 INFO  /127.0.0.1:61679 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:00,880 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61679 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:01,991 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:02,001 INFO  /127.0.0.1:61681 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:02,011 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61681 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:03,112 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo8001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:03,122 INFO  /127.0.0.1:61682 - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:03,122 INFO  [ws://localhost:8001/echo8001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61682 http/1.1] - [localhost:8001] "GET /echo8001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:04,273 INFO  /127.0.0.1:61683 - [localhost:8050] "GET /echoRepeat10001/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:04,273 INFO  /127.0.0.1:61684 - [localhost:8050] "GET /echoRepeat10001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:04,273 INFO  [ws://localhost:8050/echoRepeat10001 x-kaazing-handshake]
+  [tcp://127.0.0.1:61684 http/1.1] - [localhost:8050] "GET /echoRepeat10001?.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:05,725 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:05,725 INFO  /127.0.0.1:61685 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:05,725 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61685 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:56:06,835 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:06,845 INFO  /127.0.0.1:61686 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:06,845 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61686 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:56:07,946 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:07,956 INFO  /127.0.0.1:61687 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:07,956 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61687 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 16:56:09,069 INFO  /127.0.0.1:61677 - [localhost:8001] "GET /echo/;e/cookies?.ki=p&.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 16:56:09,079 INFO  /127.0.0.1:61688 - [localhost:8001] "GET /echo?.ki=p&.kl=Y HTTP/1.1 " "-"
+2015-03-02 16:56:09,079 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:61688 http/1.1] - [localhost:8001] "GET /echo?.kl=Y&.ki=p HTTP/1.1 " "-"
+2015-03-02 17:40:37,692 INFO  /127.0.0.1:62516 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 17:40:37,692 INFO  /127.0.0.1:62517 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,712 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:62517 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,812 INFO  /127.0.0.1:62516 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 17:40:37,812 INFO  /127.0.0.1:62518 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,812 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:62518 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,922 INFO  /127.0.0.1:62516 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 17:40:37,932 INFO  /127.0.0.1:62519 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,952 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:62519 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,952 INFO  /127.0.0.1:62516 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 17:40:37,962 INFO  /127.0.0.1:62520 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,962 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:62520 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,972 INFO  /127.0.0.1:62516 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 17:40:37,972 INFO  /127.0.0.1:62521 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,972 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:62521 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,972 INFO  /127.0.0.1:62516 - [localhost:8001] "GET /echo/;e/cookies?.kl=Y HTTP/1.1 " "Java/1.7.0_75"
+2015-03-02 17:40:37,972 INFO  /127.0.0.1:62522 - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"
+2015-03-02 17:40:37,972 INFO  [ws://localhost:8001/echo x-kaazing-handshake]
+  [tcp://127.0.0.1:62522 http/1.1] - [localhost:8001] "GET /echo?.kl=Y HTTP/1.1 " "-"

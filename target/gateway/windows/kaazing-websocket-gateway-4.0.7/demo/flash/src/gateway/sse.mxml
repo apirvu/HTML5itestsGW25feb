@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2007-2013, Kaazing Corporation. All rights reserved.
+
+-->
+
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" 
+          title="Adobe Flex/ActionScript Server-Sent Events Demo" 
+          layout="absolute" 
+          width="100%" 
+          height="100%" 
+          initialize="initApp()">
+
+	<mx:Script>
+		<![CDATA[
+			import com.kaazing.gateway.client.html5.EventSource
+			import com.kaazing.gateway.client.html5.MessageEvent
+			
+			import flash.events.Event
+			import flash.events.ErrorEvent
+
+			import mx.events.CollectionEvent
+			import mx.events.ListEvent
+			import mx.collections.ArrayCollection
+			import mx.utils.URLUtil
+			
+			private var rawSSEData:Array
+			private var connCount:int
+			
+			[Bindable]
+			public var sseData:ArrayCollection	
+			
+			public function setUrl():void {
+				var url:String = parentApplication.systemManager.stage.loaderInfo.url
+				url = URLUtil.getProtocol(url) + "://" + URLUtil.getServerNameWithPort(url) + "/sse"
+				location.text = url
+			}
+			
+			public function initApp():void {
+				connCount = 0
+				rawSSEData = []
+				sseData = new ArrayCollection(rawSSEData)
+			}
+			
+			private function connect_clickHandler(event:MouseEvent):void {
+				connCount++
+
+				var entry:Object = {}
+				entry.num = connCount
+				entry.src = location.text
+				entry.status = "Connecting..."
+				var es:EventSource = new EventSource(location.text)
+
+				es.onopen = function (e:Event):void {
+					for (var i:int = 0; i < sseData.length; i++) {
+						var entry:Object = sseData.getItemAt(i)
+						if (entry.es == es) {
+							entry.status = "Open"
+							sseData.dispatchEvent(new CollectionEvent(CollectionEvent.COLLECTION_CHANGE))
+							break
+						}
+					}
+				}
+					
+				es.onerror = function (e:ErrorEvent):void {					
+					for (var i:int = 0; i < sseData.length; i++) {
+						var entry:Object = sseData.getItemAt(i)
+						if (entry.es == es) {
+							entry.status = "Error"
+							entry.update = e.toString()
+							sseData.dispatchEvent(new CollectionEvent(CollectionEvent.COLLECTION_CHANGE))
+							break
+						}
+					}
+				}
+					
+				es.onmessage = function (e:MessageEvent):void {					
+					for (var i:int = 0; i < sseData.length; i++) {
+						var entry:Object = sseData.getItemAt(i)
+						if (entry.es == es) {
+							entry.status = "Open"
+							entry.update = e.data
+							sseData.dispatchEvent(new CollectionEvent(CollectionEvent.COLLECTION_CHANGE))
+							break
+						}
+					}
+				}
+					
+				entry.es = es
+				sseData.addItem(entry)
+			}
+			
+			private function item_clickHandler(event:ListEvent):void {
+				if (event.columnIndex == 1) {
+					var entry:Object = sseData.getItemAt(event.rowIndex)
+					entry.es.disconnect()
+					sseData.removeItemAt(event.rowIndex)
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:TextArea x="43" y="20" editable="false" enabled="true" wordWrap="true" width="542" height="74" borderStyle="none" backgroundAlpha="0.0" fontSize="12">
+		<mx:text>This is a demo of a server-sent events client that receives streaming data directly from a User Datagram Protocol (UDP) newsfeed data source. Note: The number of streams you can open depends on your browser's HTTP connection limit. To open additional streams, you must first close an existing stream.</mx:text>
+	</mx:TextArea>
+	<mx:HRule x="16" y="17" width="571"/>
+	<mx:HRule x="16.5" y="94" width="570"/>
+	<mx:Image x="16" y="29" source="/resources/images/info-19x19.png" width="19" height="19"/>
+	<mx:Canvas x="17" y="105" width="422" height="28" fontSize="14">
+            <mx:Label x="14" y="4" text="Location" fontSize="12" fontWeight="bold"/>
+            <mx:TextInput x="104" y="2" height="24" id="location" text="http://localhost:8001/sse" fontSize="12" width="208"/>
+            <mx:Button x="327" y="4" label="Connect" height="20" id="connect" fontSize="12" click="connect_clickHandler(event)"/>
+	</mx:Canvas>
+	<mx:DataGrid x="17" y="141" width="96%" height="380" dataProvider="{sseData}" itemClick="item_clickHandler(event);">
+		<mx:columns>
+			<mx:DataGridColumn headerText="" dataField="num" sortable="false" resizable="false" width="26"/>
+			<mx:DataGridColumn headerText="" sortable="false" resizable="false" width="30">
+				<mx:itemRenderer>
+					<mx:Component>
+						<mx:VBox horizontalAlign="center">
+							<mx:Image source="/resources/images/status-alert.png" minHeight="22" minWidth="22"/>
+						</mx:VBox>
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
+			<mx:DataGridColumn headerText="Source" dataField="src" sortable="false"/>
+			<mx:DataGridColumn headerText="Status" dataField="status" sortable="false" width="110"/>
+			<mx:DataGridColumn headerText="Last update" dataField="update" sortable="false"/>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:Panel>
+

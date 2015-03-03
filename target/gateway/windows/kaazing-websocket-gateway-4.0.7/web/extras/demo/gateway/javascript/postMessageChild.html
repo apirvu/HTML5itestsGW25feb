@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+
+    Copyright (c) 2007-2013, Kaazing Corporation. All rights reserved.
+
+-->
+
+<html>
+<head>
+    <title>PostMessage Child IFrame</title>
+
+    <!-- Required for IE6/IE7 cross-origin support -->
+    <meta name="kaazing:postMessageBridgeURL" content="PostMessageBridge.html">
+
+    <link rel="stylesheet" href="../../../resources/css/normalize.css">
+    <link rel="stylesheet" href="../../../resources/css/dev.css">
+    <link rel="stylesheet" href="../../../resources/css/demo.css">
+        <!--[if lte IE 7]> <link rel="stylesheet" href="../../../resources/css/demo-ie.css"> <![endif]-->
+
+    <script src="../javascript/PostMessage.js"></script>
+
+<script type="text/javascript">
+
+        function setup() {
+            var output = document.getElementById("output")
+
+            var destination = document.getElementById("destination");
+            var origin = document.getElementById("origin");
+            var message = document.getElementById("message");
+
+            var send = document.getElementById("send");
+            var clear = document.getElementById("clear");
+
+            // populate origin
+            origin.value = location.protocol + "//" + location.host;
+
+            // clear the log output
+            clear.onclick = function() {
+                while (output.lastChild) {
+                    output.removeChild(output.lastChild);
+                }
+            }
+
+            // whenever the Send button is pressed, post a message to the currently
+            // selected destination (either this iframe, or the parent iframe)
+            send.onclick = function() {
+                postMessage0(eval(destination.value), message.value, "*");
+            }
+
+            // listen for any messages posted to this iframe
+            window.addEventListener("message", function(event) {
+                var p = document.createElement("p");
+                p.style.wordWrap = "break-word";
+                p.innerHTML = "[" + event.origin + "] " + event.data;
+				output.appendChild(p);
+                output.scrollTop = output.scrollHeight;
+                while (output.childNodes.length > 25) {
+                    output.removeChild(output.firstChild);
+                }
+            }, false);
+        }
+    </script>
+</head>
+<body onLoad="setup()">
+    <div id="postMessageChild">
+        <form>
+            <fieldset>
+                <legend>Post Message - Child Frame</legend>
+                
+                <div class="clearfix">
+                    <div class="form-labels">
+                        <label for="origin" >Origin</label>
+                        <label for="destination" >Destination</label>
+                        <label for="message" >Message</label>
+                    </div>
+                    <div class="form-fields">
+                      	<input id="origin" readonly>
+                        <select id="destination">
+                            <option value="self" >self</option>
+                            <option value="parent" >parent</option>
+                        </select>
+                        
+                        <input id="message" value="Hello, world">
+        
+                        <button type="button" id="clear" >Clear</button>
+                        <button type="button" id="send">Send</button>
+                    </div>
+                </div>
+                
+                <div id="output" ></div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
