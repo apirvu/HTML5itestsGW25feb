@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2007-2014, Kaazing Corporation. All rights reserved.
+
+-->
+
+<gateway-config xmlns="http://xmlns.kaazing.com/2012/09/gateway">
+  <!--
+       Periodically sync this file from the HTML5 release:
+       com.kaazing.gateway.html5.assembly.extras\src\main\gateway\conf\gateway-config.xml
+  -->
+  <!-- 
+  #############################################################################
+  #############################################################################
+                Kaazing WebSocket Gateway Configuration File
+                
+  This configuration file identifies all the possible services and associated 
+  security and management that flow through Kaazing WebSocket Gateway.
+
+  Refer to the "Setting Up Kaazing WebSocket Gateway" document for basic
+  configuration information. Refer to the Administrator's Guide for detailed
+  descriptions of each element in this configuration file.
+
+  #############################################################################
+  #############################################################################
+  -->
+  <!-- 
+  Property defaults
+
+  Specify the default values for properties which will be substituted when
+  the Gateway starts. You can replace any values in this configuration file
+  with a property using the dollar-sign and curly brace format demonstrated
+  in the echo service below. Starting the Gateway replaces all instances of
+  property-name with the value you specify in this section.
+
+  You can supersede property default values by using an environment variable
+  when starting the Gateway. See the "Setting Up Kaazing WebSocket Gateway"
+  document for more information.
+  -->
+  <properties>
+    <property>
+      <name>gateway.hostname</name>
+      <value>localhost</value>
+    </property>
+    <property>
+      <name>gateway.base.port</name>
+      <value>8000</value>
+    </property>
+    <property>
+      <name>gateway.secure-base.port</name>
+      <value>9000</value>
+    </property>
+    <!-- "Extras" is not only used for demos, but also to test cross-origin services -->
+    <property>
+      <name>gateway.extras.port</name>
+      <value>8001</value>
+    </property>
+    <property>
+      <name>gateway.secure-extras.port</name>
+      <value>9001</value>
+    </property>
+  </properties>
+  <!-- 
+  Echo service
+  The echo service is a service that receives a string of characters 
+  through a WebSocket and returns the same characters to the sender.
+  The service "echoes" any input. This service is primarily used 
+  for validating the basic Gateway configuration.
+  The echo service runs a separate port to verify cross-origin access.
+  -->
+  <service>
+    <name>echo</name>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/echo</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure-extras.port}/echo</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <!--
+    You can set accept options at the service level or at the service defaults level.
+    Setting options at the service level overrides options you set at the service
+    defaults level. 
+
+    See the Service Defaults block of this configuration file for information on the
+    accept options you can set. 
+
+    For example, you can set accept options for binding WebSocket (ws) and WebSocket
+    secure (wss) to different ports on the Gateway host. You can only bind protocols for
+    addresses present in the service's accept strings. If you try to bind a
+    protocol for an address that does not exist in the service's accept strings,
+    the bindings will have no effect.
+    -->
+    <!--    
+    <accept-options>
+      <ws.bind>80</ws.bind>
+      <wss.bind>443</wss.bind>
+    </accept-options>
+    -->
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+    <!-- Keep cross-site constraints at ports 8000 (base port) and 9000 -->
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>proxy</name>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/proxyToEcho</accept>
+    <connect>ws://${gateway.hostname}:${gateway.extras.port}/echo</connect>
+    <type>proxy</type>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>proxy2</name>
+    <accept>wss://${gateway.hostname}:${gateway.secure-extras.port}/proxyToEcho</accept>
+    <connect>wss://${gateway.hostname}:${gateway.secure-extras.port}/echo</connect>
+    <type>proxy</type>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- Echo service for testing messages with large payload -->
+  <service>
+    <name>echo3</name>
+    <accept>ws://${gateway.hostname}:8011/echoLargeMessageSize</accept>
+    <accept>wss://${gateway.hostname}:9011/echoLargeMessageSize</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <accept-options>
+      <ws.maximum.message.size>1024k</ws.maximum.message.size>
+    </accept-options>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- Echo services for testing cross-origin in Integration Tests -->
+  <service>
+    <name>echo4</name>
+    <accept>ws://${gateway.hostname}:80/echo80</accept>
+    <accept>wss://${gateway.hostname}:443/echo443</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <accept-options>
+      <ws.inactivity.timeout>5</ws.inactivity.timeout>
+    </accept-options>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- testing same origin -->
+  <service>
+    <name>echo5</name>
+    <accept>ws://${gateway.hostname}:${gateway.base.port}/echo8000</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure-base.port}/echo9000</accept>
+    <!--same origin for http -->
+    <!--same origin for https -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+  </service>
+  <service>
+    <name>echo6</name>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/echo8001</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure-extras.port}/echo8001</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure-extras.port}/echo9001</accept>
+    <!-- Support ssl streaming from port 8001 to 9001 -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo7</name>
+    <accept>ws://${gateway.hostname}:8002/echo8002</accept>
+    <accept>wss://${gateway.hostname}:9002/echo9002</accept>
+    <!-- do not allow connection from port 8000 -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+  </service>
+  <service>
+    <name>echo8</name>
+    <accept>ws://${gateway.hostname}:8003/echo8003</accept>
+    <accept>wss://${gateway.hostname}:9003/echo9003</accept>
+    <!-- allow connections from anywhere -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo9</name>
+    <accept>ws://${gateway.hostname}:8004/echoAuth</accept>
+    <accept>wss://${gateway.hostname}:9004/echoAuth</accept>
+    <accept>ws://${gateway.hostname}:80/echoAuth</accept>
+    <accept>wss://${gateway.hostname}:443/echoAuth</accept>
+    <!-- Test authentication -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <accept-options>
+      <ws.inactivity.timeout>5</ws.inactivity.timeout>
+    </accept-options>
+    <realm-name>demo</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo10</name>
+    <accept>ws://${gateway.hostname}:8006/echoAuth</accept>
+    <accept>wss://${gateway.hostname}:9006/echoAuth</accept>
+    <!-- Test authentication -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-challenge</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo11</name>
+    <accept>ws://${gateway.hostname}:8005/echo8005</accept>
+    <accept>wss://${gateway.hostname}:9005/echo9005</accept>
+    <!-- allow connections from unused (bad) source origin -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:7999</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- trailing slashes -->
+  <service>
+    <name>echo12</name>
+    <accept>ws://${gateway.hostname}:8026/</accept>
+    <accept>ws://${gateway.hostname}:8027</accept>
+    <accept>wss://${gateway.hostname}:9026/</accept>
+    <accept>wss://${gateway.hostname}:9027</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- protocol bind -->
+  <service>
+    <name>echo13</name>
+    <accept>ws://${gateway.hostname}:8040/echo</accept>
+    <accept>wss://${gateway.hostname}:9040/echo</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <accept-options>
+      <ws.bind>8051</ws.bind>
+      <wss.bind>9051</wss.bind>
+    </accept-options>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo14</name>
+    <accept>ws://${gateway.hostname}:8050/echoRepeat1001</accept>
+    <accept>wss://${gateway.hostname}:9050/echoRepeat1001</accept>
+    <!-- Performance tests: allow connections from anywhere -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <repeat>1001</repeat>
+    </properties>
+    <accept-options>
+      <ws.inactivity.timeout>5</ws.inactivity.timeout>
+    </accept-options>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo15</name>
+    <accept>ws://${gateway.hostname}:8050/echoRepeat10001</accept>
+    <accept>wss://${gateway.hostname}:9050/echoRepeat10001</accept>
+    <!-- Performance tests: allow connections from anywhere -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <repeat>10001</repeat>
+    </properties>
+    <accept-options>
+      <ws.inactivity.timeout>5</ws.inactivity.timeout>
+    </accept-options>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo15NoTimeout</name>
+    <accept>ws://${gateway.hostname}:8050/echoRepeat10001NoTimeout</accept>
+    <accept>wss://${gateway.hostname}:9050/echoRepeat10001NoTimeout</accept>
+    <!-- Performance tests: allow connections from anywhere -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <repeat>10001</repeat>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo16</name>
+    <accept>ws://${gateway.hostname}:6001/basicrecycle</accept>
+    <accept>wss://${gateway.hostname}:7001/basicrecycle</accept>
+    <!-- Test authentication -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>basic-recycle</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo17</name>
+    <accept>ws://${gateway.hostname}:6002/basicchallenge</accept>
+    <accept>wss://${gateway.hostname}:7002/basicchallenge</accept>
+    <!-- Test authentication -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>basic-challenge</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo18</name>
+    <accept>ws://${gateway.hostname}:6003/applicationrecycle</accept>
+    <accept>wss://${gateway.hostname}:7003/applicationrecycle</accept>
+    <!-- Test authentication -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-recycle</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo19</name>
+    <accept>ws://${gateway.hostname}:6004/applicationchallenge</accept>
+    <accept>wss://${gateway.hostname}:7004/applicationchallenge</accept>
+    <!-- Test authentication -->
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-challenge</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- 
+  Directory service
+  The directory service is used to serve static files from the embedded web server
+  within Kaazing WebSocket Gateway. For example, you access the Kaazing 'home'
+  page using this service.
+  
+  The <directory> tag specifies the path of your static files relative 
+  to GATEWAY_HOME/web, where GATEWAY_HOME is the directory where you 
+  installed Kaazing WebSocket Gateway. Note: You cannot specify an
+  absolute path in the <directory> tag.
+  -->
+  <service>
+    <name>directory</name>
+    <accept>http://${gateway.hostname}:${gateway.base.port}/</accept>
+    <accept>https://${gateway.hostname}:${gateway.secure-base.port}/</accept>
+    <type>directory</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <directory>/base</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+  <!-- This is different from the way its defined in HTML5! (as of 3.2.0) -->
+  <service>
+    <name>directory2</name>
+    <accept>http://${gateway.hostname}:${gateway.extras.port}/</accept>
+    <accept>https://${gateway.hostname}:${gateway.secure-extras.port}/</accept>
+    <type>directory</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <directory>/extras</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+  <service>
+    <name>commandcenter-directory</name>
+    <description>Directory service for the Kaazing Console files</description>
+    <accept>http://${gateway.hostname}:${gateway.base.port}/commandcenter</accept>
+    <type>directory</type>
+    <properties>
+      <directory>/commandcenter</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+  </service>
+  <!-- 
+  #############################################################################
+  #############################################################################
+                       Session configuration
+  #############################################################################
+  #############################################################################
+  -->
+  <!-- 
+  Session configuration 
+  This is the element that associates a session with one or more services by 
+  matching the domain of each service's accept URL.
+  Refer to the Security Guide for more information.
+  -->
+  <!-- 
+  #############################################################################
+  #############################################################################
+                       Security configuration
+  #############################################################################
+  #############################################################################
+  -->
+  <!-- Security configuration -->
+  <security>
+    <!--
+    The keystore element is used to configure the keystore that contains 
+    encryption keys for secure communications with Kaazing WebSocket Gateway.
+    -->
+    <keystore>
+      <type>JCEKS</type>
+      <file>keystore.db</file>
+      <password-file>keystore.pw</password-file>
+    </keystore>
+    <!--
+    The truststore element is used to configure the truststore that 
+    contains digital certificates for certificate authorities 
+    trusted by Kaazing WebSocket Gateway.
+    -->
+    <truststore>
+      <type>JCEKS</type>
+      <file>truststore.db</file>
+    </truststore>
+    <!--
+    This is the element that associates an authenticated user with a set 
+    of authorized roles.
+    -->
+    <realm>
+      <name>demo</name>
+      <description>Kaazing WebSocket Gateway Demo</description>
+      <!-- 
+      The login module communicates with a user database to validate user's 
+      credentials and to determine a set of authorized roles.
+      by default, the file-based module is used.
+      -->
+      <!--
+      The following is an example of an LDAP-based login-module element:
+      -->
+      <!--
+      <login-module>
+        <type>ldap</type>
+        <success>required</success>
+        <options>
+          <userProvider>ldap://ldap-svr/ou=people,dc=example,dc=com</userProvider>
+          <userFilter>(&amp;(uid={USERNAME})(objectClass=inetOrgPerson))</userFilter>
+          <authzIdentity>{EMPLOYEENUMBER}</authzIdentity>
+        </options>
+      </login-module>
+      -->
+      <!--
+      The following is an example of a Kerberos v5 login-module element.
+      Full documentation of options for this login-module is at:
+      http://java.sun.com/javase/6/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/Krb5LoginModule.html
+      -->
+      <!--
+      <login-module>
+        <type>kerberos5</type>
+        <success>required</success>
+        <options>
+          <useKeyTab>true</useKeyTab>
+          <keyTab>/etc/krb5.keytab</keyTab>
+          <principal>HTTP/localhost@KERBEROS.DOMAIN.NAME</principal>
+          <isInitiator>false</isInitiator>
+          <doNotPrompt>true</doNotPrompt>
+          <storeKey>true</storeKey>
+        </options>
+      </login-module>
+      -->
+      <!-- 
+      The following is an example of a GSS login-module element. When combined 
+      with the kerberos5 login-module and the Negotiate authentication scheme
+      this can be used to implement SPNEGO.
+      -->
+      <!--
+      <login-module>
+        <type>gss</type>
+        <success>required</success>
+      </login-module>
+      -->
+      <!--
+      Kaazing WebSocket Gateway also supports a plugin mechanism for integration 
+      with custom authentication modules based on the Java LoginModule API. 
+      To use a custom authentication module, configure your login-module element 
+      as follows:
+      -->
+      <!--
+      <login-module>
+        <type>class:fully-qualified-class-name</type>
+        <success>required</success>
+        <options>
+          .
+          .
+          .
+        </options>
+      </login-module>
+      -->
+      <authentication>
+        <http-challenge-scheme>Application Basic</http-challenge-scheme>
+        <authorization-mode>challenge</authorization-mode>
+        <authorization-timeout>20</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+    <realm>
+      <name>basic-recycle</name>
+      <description>Kaazing WebSocket Gateway Itests</description>
+      <authentication>
+        <http-challenge-scheme>Basic</http-challenge-scheme>
+        <authorization-mode>recycle</authorization-mode>
+        <authorization-timeout>25</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+    <realm>
+      <name>basic-challenge</name>
+      <description>Kaazing WebSocket Gateway Itests</description>
+      <authentication>
+        <http-challenge-scheme>Basic</http-challenge-scheme>
+        <authorization-mode>challenge</authorization-mode>
+        <authorization-timeout>25</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+    <realm>
+      <name>application-recycle</name>
+      <description>Kaazing WebSocket Gateway Itests</description>
+      <authentication>
+        <http-challenge-scheme>Application Basic</http-challenge-scheme>
+        <authorization-mode>recycle</authorization-mode>
+        <authorization-timeout>25</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+    <realm>
+      <name>application-challenge</name>
+      <description>Kaazing WebSocket Gateway Itests</description>
+      <authentication>
+        <http-challenge-scheme>Application Basic</http-challenge-scheme>
+        <authorization-mode>challenge</authorization-mode>
+        <authorization-timeout>6</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+    <realm>
+      <name>application-token-with-cookie-enabled</name>
+      <description>Kaazing WebSocket Gateway Itests</description>
+      <authentication>
+        <http-challenge-scheme>Application Token</http-challenge-scheme>
+        <http-cookie>KSESSIONID</http-cookie>
+        <authorization-timeout>10</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>class:com.kaazing.gateway.customloginmodule.HttpCookieValidationLoginModule</type>
+            <success>required</success>
+          </login-module> 
+        </login-modules>
+      </authentication>
+    </realm>
+    <realm>
+      <name>application-token-with-multiplecookie-enabled</name>
+      <description>Kaazing WebSocket Gateway Itests</description>
+      <authentication>
+        <http-challenge-scheme>Application Token</http-challenge-scheme>
+        <http-cookie>KSESSIONID</http-cookie>
+        <http-cookie>KSESSIONID1</http-cookie>
+        <http-cookie>KSESSIONID2</http-cookie>
+        <authorization-timeout>10</authorization-timeout>
+        <login-modules>
+          <login-module>
+            <type>class:com.kaazing.gateway.customloginmodule.HttpCookieMultipleValidationLoginModule</type>
+            <success>required</success>
+          </login-module> 
+        </login-modules>
+      </authentication>
+    </realm>
+
+    <!-- 
+    The realm used by the Kaazing Console for authentication. The SNMP
+     management service should be the only one to use this realm. 
+    -->
+    <realm>
+      <name>commandcenter</name>
+      <description>Kaazing Console</description>
+      <authentication>
+        <http-challenge-scheme>Application Basic</http-challenge-scheme>
+        <authorization-timeout>1800</authorization-timeout>
+        <!--
+            <http-cookie>kaazingConsole</http-cookie>
+        -->
+        <login-modules>
+          <!--
+          The login module communicates with a user database to
+          validate user's credentials and to determine a set of
+          authorized roles. By default, the file-based module is used.
+          -->
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+        </login-modules>
+      </authentication>
+    </realm>
+  </security>
+  <!-- 
+  #############################################################################
+  #############################################################################
+                            Upgrading Your License
+
+  The developer's version of the Kaazing WebSocket Gateway demo bundle allows 
+  only a limited number of concurrent client connections. 
+  To upgrade your license, contact sales@kaazing.com. 
+  After you place a valid license key in GATEWAY_HOME/license, messages similar
+  to the following example INFO messages display in your shell or command 
+  prompt at server startup:
+  INFO  Checking license information
+  INFO    Valid license found for: Joe User, Example Corporation, 
+          joe@example.com
+  INFO    License expires on 06 Jun 2044
+  INFO  Starting in licensed mode
+  #############################################################################
+  #############################################################################  
+  -->
+  <!-- 
+  #############################################################################
+  #############################################################################
+                       Additional service configuration
+                       
+  Note: Proxy services are designed to proxy connections to back-end service.
+  #############################################################################
+  #############################################################################
+  -->
+  <!-- 
+  Kerberos5 proxy service
+  This type of service proxies requests to a Kerberos5 domain controller (KDC). 
+  -->
+  <!--
+  <service>
+    <accept>ws://localhost:8000/kerberos5</accept>
+    <connect>udp://kdc.example.com:88</connect>
+    <type>kerberos5.proxy</type>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  -->
+  <!--
+  UDP broadcast service
+  This type of service is used to broadcast information from a back-end
+  service.
+  
+  Kaazing WebSocket Gateway supports Multicast. To configure a service 
+  that is running on Kaazing WebSocket Gateway to use a multicast address,
+  you must specify the multicast URI in the accept property.
+  See the document "How to Configure Kaazing WebSocket Gateway to Use Multicast"
+  for more information.
+  -->
+  <service>
+    <name>broadcast</name>
+    <accept>sse://${gateway.hostname}:${gateway.extras.port}/sse</accept>
+    <accept>sse+ssl://${gateway.hostname}:${gateway.secure-extras.port}/sse</accept>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/broadcast</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure-extras.port}/broadcast</accept>
+    <type>broadcast</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+      <!--accept>udp://${gateway.hostname}:50505</accept-->
+      <!--
+      To test the EventSource API, we set up an outbound websocket connection,
+      that sends messages. The EventSource is receiving them on the above URL.
+      The WebSocket connection is basically used as source for the SSE stream.
+      -->
+      <!--
+      <accept>ws://${gateway.hostname}:${gateway.extras.port}/outboundsse</accept>
+    -->
+      <!--when client is running from the browser, chances are that accept tags under
+    properties tag here would only accept from same origin, so we need to introduce
+    accept tags from same origin here. Please note that cross-site-constraints
+      defined below for this service do not apply to the accept tags under
+    properties tag. -->
+      <accept>ws://${gateway.hostname}:${gateway.base.port}/outboundsse</accept>
+    </properties>
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- this service does the same thing as the one above it, just with outbound stream of 
+   same origin as the https page. It is needed to be used when running the page on https.
+   It is created to overcome the limitation whereby the websocket in the <accept> element 
+   in the <properties> element only accepts connection from the same origin. 
+   -->
+  <service>
+    <name>broadcast2</name>
+    <accept>sse://${gateway.hostname}:${gateway.extras.port}/sseOnHttps</accept>
+    <accept>sse+ssl://${gateway.hostname}:${gateway.secure-extras.port}/sseOnHttps</accept>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/broadcastOnHttps</accept>
+    <accept>wss://${gateway.hostname}:${gateway.secure-extras.port}/broadcastOnHttps</accept>
+    <type>broadcast</type>
+    <properties>
+      <accept>wss://${gateway.hostname}:${gateway.secure-base.port}/outboundsseOnHttps</accept>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- 
+  Session service
+  This type of service is used to prevent sessions from timing out.
+  Refer to the Security Guide for more information.
+  Note: Communication with the session service should be always be 
+  configured to use HTTPS in production environments.
+  -->
+  <service>
+    <name>session</name>
+    <accept>http://${gateway.hostname}:${gateway.extras.port}/session</accept>
+    <accept>https://${gateway.hostname}:${gateway.secure-extras.port}/session</accept>
+    <type>session</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+  <!--
+  #############################################################################
+  #############################################################################
+                             Service Defaults
+  #############################################################################
+  #############################################################################
+  -->
+  <!--
+  The accept element in a service is frequently sufficient for the service to
+  receive messages and requests. However, sometimes the value of the accept
+  element does not match the physical description of the host. For example, the
+  Gateway may be behind a load balancer or in a cloud environment, in which case
+  its local network information may not match the settings specified by the
+  accept element.
+
+  For instance, your service may accept on ws://www.example.com but that
+  hostname resolves to the IP address of the load balancer, not the Gateway
+  host. In such a case, you can configure the Gateway using the {protocol}.bind
+  element, which enables you to bind the address specified in the accept element
+  to an internal address (where the address maps in your network). This option
+  provides a choice of binding the address to a specific port or hostname and
+  port (if you specify a hostname here, you must specify a port).
+
+  See the document "How to Configure Kaazing WebSocket Gateway on an Internal Network"
+  for more information.
+
+  You can configure default values that apply to all services. Elements and
+  values you specify in individual services override the defaults you specify
+  in this section. The following list shows the service configurations
+  you can specify in this section:
+
+    * Accept Options
+
+      - SSL Encryption
+        The SSL encryption can be in one of two forms:
+         
+          <ssl.encryption>enabled</ssl.encryption>
+        or
+          <ssl.encryption>disabled</ssl.encryption>
+         
+        The default is <ssl.encryption>enabled</ssl.encryption> so does not need to be
+        explicitly set if there is no ssl.encryption specified.
+       
+      - Protocol binds
+        These are in the form:
+       
+        <{protocol}.bind>[hostname:]port</{protocol}.bind>
+
+        {protocol} is one of ws, wss, http, https, ssl, or tcp. In the value,
+        hostname is optional, but port is required. If a hostname (or IP
+        address) is not specified, then the Gateway will bind to the wildcard
+        address (0.0.0.0) using the given port. Binding to the wildcard address
+        means the Gateway will listen on all interfaces of the host.
+
+        If there are multiple accepts on a service, each using different
+        protocols, then each protocol that needs to be bound must be explicitly
+        bound. For example:
+
+        <service>
+          <accept>http://192.168.10.25:8000/echo</accept>
+          <accept>ws://192.168.10.25:8001/echo</accept>
+          <accept-options>
+            <http.bind>80</http.bind>
+            <ws.bind>443</ws.bind>
+          </accept-options>
+        </service>
+       
+      - Maximum WebSocket message size
+        By default, the maximum size of data permitted in an incoming WebSocket
+        frame is 128 kilobytes. You can change the maximum incoming data size over
+        ws and wss by setting the following accept-option (see the Administrator's Guide
+        for more information):
+
+        <ws.maximum.message.size>64k</ws.maximum.message.size>
+       
+      - HTTP(S) keep-alive timeout
+        This is the number of seconds the Gateway will wait for a subsequent request
+        on an HTTP or HTTPS connection before closing the connection to conserve
+        resources. The default value is 30 seconds. You can change this value by setting
+        the following accept-option (see the Administrator's Guide for more information):
+
+        <http.keepalive.timeout>120</http.keepalive.timeout>
+       
+      An example for setting service defaults (turning SSL encryption off, binding each
+      protocol, reducing the limit for incoming WebSocket frame size and increasing the
+      timeout for HTTP connections) is as follows. Note that in this example both ws
+      and http are bound to port 80. This works because they are compatible protocols.
+      Similarly, wss and https can both be bound to the same port because they are
+      compatible protocols. However, if you try to bind incompatible protocols to the 
+      same port, you will receive a port conflict error on Gateway startup. For instance, 
+      you cannot bind ws and https to the same port.
+
+      <service-defaults>
+        <accept-options>
+          <ssl.encryption>disabled</ssl.encryption>
+          <ws.bind>80</ws.bind>
+          <wss.bind>192.168.10.25:443</wss.bind>
+          <http.bind>192.168.10.25:80</http.bind>
+          <https.bind>192.168.10.25:443</https.bind>
+          <tcp.bind>192.168.10.25:8075</tcp.bind>
+          <ws.maximum.message.size>32k</ws.maximum.message.size>
+          <http.keepalive.timeout>60</http.keepalive.timeout>
+        </accept-options>
+      </service-defaults>
+
+    * MIME-type Mappings
+
+      A service can return files of various types to a client. Generally, HTTP
+      mandates that a response containing a file also specify a Content-Type
+      header describing the file contents. You may use a <mime-mapping> tag to specify
+      the Content-Type value to be returned for files with a particular name extension. 
+      For example,
+      
+      <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+      </mime-mapping>
+      <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+      </mime-mapping>
+
+      indicates that for files with names ending in '.png', the header 
+      'Content-Type: image/png' should be returned by the Gateway, and 'Content-Type: text/html'
+      should be returned for .html files. Mappings can be specified in the both the 
+      <service-defaults> block and in any <service> blocks. If a mapping for a given extension 
+      is specified in both the <service-defaults> block and a <service> block, the <service>-level 
+      mapping will be used when providing files from that service.
+      
+      An initial set of mappings is provided in <service-defaults> below, and should be edited
+      as needed, but not removed. If specified in <service-defaults>, all <mime-mapping> blocks
+      must come after any <accept-options>. If specified in <service>, all <mime-mapping> blocks
+      must come just before any <cross-site-constraint> blocks.
+  -->
+  <service-defaults>
+    <mime-mapping>
+      <extension>html</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htm</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htm</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>js</extension>
+      <mime-type>text/javascript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>png</extension>
+      <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>gif</extension>
+      <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jpg</extension>
+      <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jpeg</extension>
+      <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>css</extension>
+      <mime-type>text/css</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>swf</extension>
+      <mime-type>application/x-shockwave-flash</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>xap</extension>
+      <mime-type>application/x-silverlight-app</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htc</extension>
+      <mime-type>text/x-component</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jnlp</extension>
+      <mime-type>application/x-java-jnlp-file</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>manifest</extension>
+      <mime-type>text/cache-manifest</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>appcache</extension>
+      <mime-type>text/cache-manifest</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>vtt</extension>
+      <mime-type>text/vtt</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>aspx</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+  </service-defaults>
+  <!-- 
+  #############################################################################
+  #############################################################################
+                       Management configuration
+  #############################################################################
+  #############################################################################
+  -->
+  <!--
+  Gateway management configuration
+  Refer to the Security Guide and the document "How to Manage the Kaazing WebSocket
+  Gateway" for more information.
+  -->
+  <service>
+    <name>JMX Management</name>
+    <description>JMX management service</description>
+    <type>management.jmx</type>
+    <properties>
+      <connector.server.address>jmx://${gateway.hostname}:2020/</connector.server.address>
+    </properties>
+    <realm-name>commandcenter</realm-name>
+    <!-- secure the management using a security realm -->
+    <!-- configure the authorized user roles -->
+    <authorization-constraint>
+      <require-role>ADMINISTRATOR</require-role>
+    </authorization-constraint>
+  </service>
+  <!-- 
+  SNMP Management service.
+  -->
+  <service>
+    <name>SNMP Management</name>
+    <description>SNMP management service</description>
+    <accept>ws://${gateway.hostname}:${gateway.base.port}/snmp</accept>
+    <type>management.snmp</type>
+    <realm-name>commandcenter</realm-name>
+    <!-- secure the management using a security realm -->
+    <!-- configure the authorized user roles -->
+    <!--
+    <authorization-constraint>
+      <require-role>ADMINISTRATOR</require-role>
+    </authorization-constraint>
+    -->
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!--
+  #############################################################################
+  #############################################################################
+                            Do not remove closing element
+  #############################################################################
+  #############################################################################
+  -->
+  <!-- From kepler.html5/trunk/com.kaazing.gateway.html5.assembly.extras/src/main/gateway/conf/cluster/cluster-member-1-config.xml -->
+  <!-- Echo running on a separate port verifies cross-origin access -->
+  <service>
+    <name>echo20</name>
+    <accept>ws://${gateway.hostname}:8181/echo</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo21</name>
+    <accept>wss://${gateway.hostname}:9181/echo</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- redirection to different port and from nonsecure to secure -->
+  <service>
+    <name>echo22</name>
+    <accept>wss://${gateway.hostname}:9191/echo</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- redirection to same port and stays nonsecure -->
+  <service>
+    <name>echo23</name>
+    <accept>ws://${gateway.hostname}:8581/echoRedirectSameOrigin</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- Echo with auth -->
+  <service>
+    <name>echo24</name>
+    <accept>ws://${gateway.hostname}:8184/echoAuth</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>demo</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo25</name>
+    <accept>wss://${gateway.hostname}:9184/echoAuth</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <!-- Echo with auth -->
+  <service>
+    <name>echo26</name>
+    <accept>ws://${gateway.hostname}:8186/echoAuth</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-challenge</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo27</name>
+    <accept>wss://${gateway.hostname}:9186/echoAuth</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-challenge</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo28</name>
+    <accept>ws://${gateway.hostname}:8004/echoAuthCookie</accept>
+    <accept>wss://${gateway.hostname}:9004/echoAuthCookie</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-token-with-cookie-enabled</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo29</name>
+    <accept>ws://${gateway.hostname}:8004/echoAuthMultCookie</accept>
+    <accept>wss://${gateway.hostname}:9004/echoAuthMultCookie</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <realm-name>application-token-with-multiplecookie-enabled</realm-name>
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>echo30</name>
+    <accept>wss://${gateway.hostname}:9007/echoSSLClientVerify</accept>
+    <type>echo</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <accept-options>
+      <ssl.verify-client>required</ssl.verify-client>
+    </accept-options>
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>proxy3</name>
+    <accept>ws://${gateway.hostname}:8181/echoDOWN</accept>
+    <connect>tcp://${gateway.hostname}:5783</connect> <!-- port number which will fail -->
+    <type>proxy</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+  <service>
+    <name>proxy4</name>
+    <accept>wss://${gateway.hostname}:9181/echoDOWN</accept>
+    <connect>tcp://${gateway.hostname}:5783</connect> <!-- port number which will fail -->
+    <type>proxy</type>
+    <properties>
+      <service.domain>${gateway.hostname}</service.domain>
+      <encryption.key.alias>session</encryption.key.alias>
+    </properties>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>http://${gateway.hostname}:${gateway.extras.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-base.port}</allow-origin>
+    </cross-site-constraint>
+    <cross-site-constraint>
+      <allow-origin>https://${gateway.hostname}:${gateway.secure-extras.port}</allow-origin>
+    </cross-site-constraint>
+  </service>
+</gateway-config>
